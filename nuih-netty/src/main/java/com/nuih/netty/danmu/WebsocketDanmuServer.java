@@ -1,6 +1,5 @@
 package com.nuih.netty.danmu;
 
-import com.nuih.netty.snake_game.SnakeGameServer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
@@ -47,7 +46,7 @@ public class WebsocketDanmuServer {
             workerGroup.shutdownGracefully();
             bossGroup.shutdownGracefully();
             
-    		System.out.println("SnakeGameServer 关闭了");
+    		System.out.println("WebsocketDanmuServer 关闭了");
         }
     }
 

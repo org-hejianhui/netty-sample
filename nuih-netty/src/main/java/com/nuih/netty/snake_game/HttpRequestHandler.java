@@ -18,12 +18,14 @@ public class HttpRequestHandler extends SimpleChannelInboundHandler<FullHttpRequ
     private static final File INDEX;
 
     static {
-        //URL location = HttpRequestHandler.class.getProtectionDomain().getCodeSource().getLocation();
+        URL location = HttpRequestHandler.class.getProtectionDomain().getCodeSource().getLocation();
         try {
-            //String path = location.toURI() + "SnakeGamePage.html";
-            //path = !path.contains("file:") ? path : path.substring(5);
-            // INDEX = new File(path);
-            INDEX = new File("webapp/" + "SnakeGamePage.html");
+            String path = location.toURI() + "SnakeGamePage.html";
+            path = !path.contains("file:") ? path : path.substring(5);
+            if(path.indexOf("jar") > 0)
+                INDEX = new File("webapp/" + "SnakeGamePage.html");
+            else
+                INDEX = new File(path);
         } catch (Exception e) {
             throw new IllegalStateException("Unable to locate SnakeGamePage.html", e);
         }
